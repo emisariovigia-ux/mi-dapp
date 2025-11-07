@@ -1,68 +1,802 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Página web básica de ejemplo">
-  <title>Mi Página Web</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-    nav {
-      background-color: #555;
-      padding: 0.5rem;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      padding: 1rem;
-    }
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Licenciamiento Blockchain</title>
+    <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
+    <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+    <link href="[https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lato:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Lato:wght@400;700&display=swap)" rel="stylesheet">
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css)">
+    <style>
+/* 1. CONFIGURACIÓN GENERAL */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0a0a0a; /* Un fondo aún más oscuro para el contraste */
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px 0;
+  place-items: center;
+}
+
+.slide-container {
+  align-items: center;
+  /* El color de fondo principal para las diapositivas */
+  background-color: #121212;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra más pronunciada */
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  width: 1280px;
+  /* Borde sutil para definir la diapositiva */
+  border: 1px solid #333;
+}
+
+/* Efecto de fondo sutil (opcional, como líneas de circuito) */
+.slide-container::before {
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0.03;
+  position: absolute;
+  top: 0;
+  /* Un patrón SVG sutil */
+  background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  width: 100%;
+  z-index: 0;
+}
+
+.slide-container>* {
+  position: relative;
+  z-index: 1;
+}
+
+/* 2. TIPOGRAFÍA CONSISTENTE (Estilo "Bond") */
+
+/* Fuente de encabezados: Fuerte, Profesional */
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  color: #E0E0E0; /* Texto principal claro, no blanco puro */
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+/* Fuente de cuerpo de texto: Clara, legible */
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container .number-label,
+.slide-container .legend li,
+.slide-container .chart-summary,
+.slide-container .bar .label,
+.slide-container th,
+.slide-container td,
+.slide-container .alternating-text-tile p,
+.slide-container .bleed-text-side p {
+  color: #BDBDBD; /* Gris claro para cuerpo de texto */
+  font-family: 'Lato', sans-serif;
+}
+
+/* Color de acento: Dorado Sofisticado */
+.slide-container h1 span,
+.slide-container .slide-title span,
+.slide-container h3,
+.slide-container .icon,
+.slide-container .number,
+.slide-container .timeline-item h3,
+.slide-container .bullet-list i,
+.slide-container .table-layout th,
+.slide-container .quote-layout blockquote::before,
+.slide-container .quote-layout blockquote::after,
+.slide-container .section-title-layout hr {
+  color: #D4AF37; /* Oro metálico */
+}
+
+/* Tamaños de fuente consistentes */
+.slide-container h1 {
+  font-size: 70px;
+  line-height: 1.2;
+}
+
+.slide-container .slide-title {
+  font-size: 40px;
+  font-weight: 700; /* Más fuerte para los títulos */
+  margin-bottom: 40px;
+  text-align: left;
+  width: 100%;
+  color: #FFFFFF; /* Blanco puro para el título principal */
+}
+
+.slide-container h3 {
+  font-size: 24px; /* Ligeramente más pequeño para h3 */
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container .subtitle,
+.slide-container th,
+.slide-container td {
+  font-size: 18px;
+  line-height: 1.6; /* Espaciado de línea generoso */
+}
+
+.slide-container .subtitle {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 20px auto;
+  color: #E0E0E0;
+}
+
+.slide-container .content-area {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 3. DEFINICIONES DE LAYOUT */
+
+/* --- Layout: Title_Slide --- */
+.title-layout {
+  text-align: center;
+}
+.title-layout h1 {
+  font-size: 80px;
+  color: #FFFFFF;
+}
+
+/* --- Layout: Section_Title --- */
+.section-title-layout {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.section-title-layout h2 {
+  font-size: 70px;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+}
+.section-title-layout p {
+  font-size: 24px;
+  margin: 0 auto;
+  max-width: 800px;
+  color: #BDBDBD;
+}
+.section-title-layout hr {
+  background-color: #D4AF37; /* Acento dorado */
+  border: none;
+  height: 4px;
+  margin: 30px auto;
+  width: 100px;
+}
+
+/* --- Layout: Table --- */
+.table-layout {
+  width: 100%;
+}
+.table-layout table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #222222; /* Fondo de la tabla */
+  border: 1px solid #444; /* Borde de la tabla */
+}
+.table-layout th,
+.table-layout td {
+  border-bottom: 1px solid #444; /* Líneas de fila */
+  border-left: 1px solid #444; /* Líneas de columna */
+  padding: 18px 24px;
+  text-align: left;
+}
+.table-layout th {
+  background-color: #1a1a1a; /* Fondo del encabezado */
+  color: #D4AF37; /* Texto del encabezado dorado */
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+.table-layout td {
+  color: #E0E0E0;
+}
+.table-layout tr:last-child td {
+  border-bottom: none;
+}
+.table-layout tr td:first-child,
+.table-layout tr th:first-child {
+  border-left: none; /* Sin borde a la izquierda */
+}
+
+/* --- Layout: Tiled_Text_With_Icons --- */
+.tiled-content {
+  align-items: stretch;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  width: 100%;
+}
+.tile {
+  align-items: center;
+  background-color: #222222; /* Color del tile */
+  border-radius: 12px;
+  border: 1px solid #444; /* Borde del tile */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-start;
+  padding: 30px;
+  text-align: center;
+}
+.tile .icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.tile h3 {
+  font-size: 24px;
+}
+.tile p {
+  font-size: 16px;
+  color: #BDBDBD;
+}
+
+/* --- Layout: Timeline --- */
+.timeline-layout {
+  align-items: stretch;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+}
+.timeline-layout .timeline-line {
+  background-color: #444; /* Línea de tiempo más oscura */
+  height: 4px;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-2px);
+  width: 100%;
+  z-index: 0;
+}
+.timeline-item {
+  position: relative;
+  text-align: center;
+  width: 23%;
+}
+.timeline-item::after {
+  background-color: #121212; /* Fondo del punto */
+  border-radius: 50%;
+  border: 4px solid #D4AF37; /* Borde dorado */
+  content: '';
+  height: 20px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  z-index: 1;
+}
+.timeline-item .content-wrapper {
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.timeline-item:nth-child(odd) .content-wrapper {
+  bottom: 50%;
+  margin-bottom: 25px;
+}
+.timeline-item:nth-child(even) .content-wrapper {
+  margin-top: 25px;
+  top: 50%;
+}
+.timeline-item h3 {
+  font-size: 22px;
+}
+.timeline-item p {
+  font-size: 16px;
+  color: #BDBDBD;
+}
+
+/* --- Layout: Highlighted_Numbers --- */
+.two-column {
+  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  width: 100%;
+}
+.highlight-numbers-layout>div:first-child {
+  flex: 0 0 40%;
+  text-align: center;
+  padding-top: 20px;
+}
+.highlight-numbers-layout .number {
+  font-size: 150px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1;
+}
+.highlight-numbers-layout .number-label {
+  font-size: 24px;
+  font-weight: 700;
+  color: #E0E0E0;
+}
+.highlight-numbers-layout>div:last-child {
+  padding-top: 20px;
+}
+.highlight-numbers-layout p {
+  font-size: 22px;
+  line-height: 1.6;
+}
+
+/* --- Layout: Image_Right_Text_Left --- */
+.image-wrapper {
+  border-radius: 12px;
+  height: 400px; /* Altura fija para la imagen */
+  overflow: hidden;
+  width: 100%;
+  border: 1px solid #444;
+}
+.image-wrapper img {
+  height: 100%;
+  object-fit: contain; /* Usar contain para no cortar la imagen abstracta */
+  width: 100%;
+}
+.two-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.two-column li {
+  font-size: 20px;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+}
+/* Estilo de viñeta personalizado */
+.two-column li::before {
+  content: '✓'; /* Viñeta de cheque */
+  color: #D4AF37; /* Color dorado */
+  font-weight: 700;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+/* --- Layout: Bleed_Image_Right --- */
+.slide-container.bleed-image-layout {
+  align-items: start;
+  display: grid;
+  gap: 50px;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+}
+.slide-container.bleed-image-layout>.content-container {
+  padding: 60px 0 60px 60px;
+}
+.slide-container.bleed-image-layout>.image-container {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+.slide-container.bleed-image-layout img.bleed-image-side {
+  border-radius: 0 8px 8px 0;
+  height: 100%;
+  max-width: 100%;
+  max-height: 720px;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+.slide-container.bleed-image-layout .bleed-text-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.slide-container.bleed-image-layout .bleed-text-side p {
+  color: #BDBDBD;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 18px;
+}
+.slide-container.bleed-image-layout .bleed-text-side p strong {
+    color: #E0E0E0;
+    font-weight: 700;
+}
+
+
+/* --- Layout: Quote --- */
+.quote-layout {
+  text-align: center;
+  width: 90%;
+}
+.quote-layout blockquote {
+  color: #FFFFFF; /* Cita en blanco puro */
+  font-size: 44px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.4;
+  margin: 0 0 30px 0;
+  padding: 0 40px;
+  position: relative;
+}
+.quote-layout blockquote::before,
+.quote-layout blockquote::after {
+  content: '"';
+  font-size: 100px;
+  line-height: 0;
+  position: absolute;
+  opacity: 0.5;
+}
+.quote-layout blockquote::before {
+  left: -10px;
+  top: 30px;
+}
+.quote-layout blockquote::after {
+  bottom: 10px;
+  right: -10px;
+}
+.quote-layout cite {
+  color: #BDBDBD;
+  font-size: 22px;
+  font-style: normal;
+  font-family: 'Lato', sans-serif;
+}
+
+/* --- Layout: Styled_Bullet_Points --- */
+.bullet-list {
+  max-width: 900px;
+  width: 100%;
+}
+.bullet-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.bullet-list li {
+  align-items: flex-start; /* Alinear ícono con la primera línea de texto */
+  display: flex; /* Usar flex para alinear ícono y texto */
+  gap: 20px; /* Espacio entre ícono y texto */
+  margin-bottom: 25px;
+  position: relative;
+}
+.bullet-list i {
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 5px; /* Ajuste vertical del ícono */
+  text-align: center;
+  width: 30px; /* Ancho fijo para el ícono */
+}
+.bullet-list li strong {
+  color: #E0E0E0;
+  font-weight: 700;
+  font-size: 20px;
+}
+.bullet-list p {
+  margin: 0;
+  flex-grow: 1; /* El texto ocupa el espacio restante */
+}
+
+
+/* --- Layout: Full_Background_Image --- */
+.full-bg-image {
+  background-position: center;
+  background-size: cover;
+  padding: 0; /* Sin padding para que la imagen llene todo */
+}
+.full-bg-image .content-overlay {
+  /* Fondo oscuro semitransparente para legibilidad */
+  background-color: rgba(18, 18, 18, 0.7);
+  border-radius: 8px; /* Redondear las esquinas del overlay */
+  padding: 60px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.full-bg-image h2,
+.full-bg-image p {
+  color: #FFFFFF; /* Texto blanco puro sobre la imagen */
+}
+.full-bg-image h2 {
+    font-size: 64px;
+}
+.full-bg-image p {
+    font-size: 24px;
+    max-width: 800px;
+}
+
+/* --- Layout: Q&A --- */
+.qa-layout {
+  text-align: center;
+  width: 100%;
+  align-self: center;
+}
+.qa-layout h2 {
+  font-size: 80px;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+}
+.qa-layout p {
+  font-size: 24px;
+  color: #E0E0E0;
+}
+.qa-layout .contact-info {
+  color: #D4AF37; /* Contacto en dorado */
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Bienvenido a Mi Página Web</h1>
-  </header>
 
-  <nav>
-    <a href="#">Inicio</a>
-    <a href="#">Sobre mí</a>
-    <a href="#">Contacto</a>
-  </nav>
+<!-- Diapositiva 1: Título -->
+<div class="slide-container" id="slide1">
+    <div class="title-layout">
+        <h1>Licenciamiento 2.0: <span>Seguridad Blockchain</span></h1>
+        <p class="subtitle">Una propuesta estratégica para la gestión de activos intelectuales.</p>
+    </div>
+</div>
 
-  <main>
-    <h2>Sección principal</h2>
-    <p>Este es un ejemplo de una página HTML básica con encabezado, navegación, contenido principal y pie de página.</p>
-  </main>
+<!-- Diapositiva 2: Título de Sección (El Problema) -->
+<div class="slide-container" id="slide2">
+    <div class="section-title-layout">
+        <h2>El Desafío del Licenciamiento Actual</h2>
+        <hr>
+        <p>Los sistemas tradicionales son vulnerables, lentos e ineficientes.</p>
+    </div>
+</div>
 
-  <footer>
-    <p>&copy; 2025 Mi Página Web. Todos los derechos reservados.</p>
-  </footer>
+<!-- Diapositiva 3: Tabla (Comparativa) -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Un Nuevo Paradigma: <span>Tradicional vs. Blockchain</span></h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criterio</th>
+                        <th>Licenciamiento Tradicional</th>
+                        <th>Licenciamiento con Blockchain</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Control</strong></td>
+                        <td>Centralizado, opaco</td>
+                        <td>Descentralizado, transparente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Seguridad</strong></td>
+                        <td>Vulnerable a fraudes</td>
+                        <td>Inmutable, a prueba de fraudes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Procesos</strong></td>
+                        <td>Manual, lento, costoso</td>
+                        <td>Automatizado (Smart Contracts)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regalías</strong></td>
+                        <td>Pagos lentos, disputas</td>
+                        <td>Trazabilidad en tiempo real</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Confianza</strong></td>
+                        <td>Requiere intermediarios</td>
+                        <td>Confianza algorítmica</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Diapositiva 4: Texto en Mosaico con Iconos (La Solución) -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">La Solución: <span>Un Ecosistema Inmutable</span></h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Seguridad Inmutable</h3>
+                <p>Cada licencia es un registro criptográfico único en el ledger, imposible de alterar o falsificar.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-eye"></i></div>
+                <h3>Transparencia Total</h3>
+                <p>Todos los participantes autorizados ven el mismo registro, eliminando disputas sobre la propiedad o los términos.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-cogs"></i></div>
+                <h3>Automatización Eficiente</h3>
+                <p>Los "Smart Contracts" ejecutan automáticamente los términos del acuerdo, como los pagos de regalías.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Diapositiva 5: Línea de Tiempo (Cómo Funciona) -->
+<div class="slide-container" id="slide16">
+    <h2 class="slide-title">Flujo del Proceso <span>Simplificado</span></h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Paso 1: Registro</h3>
+                    <p>El creador registra su activo (software, patente) en la blockchain, creando un "timestamp" inmutable.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Paso 2: Contrato</h3>
+                    <p>Se definen los términos de la licencia (uso, regalías, duración) en un contrato inteligente.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Paso 3: Ejecución</h3>
+                    <p>El licenciatario paga. El Smart Contract monitorea el uso y distribuye regalías automáticamente.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="content-wrapper">
+                    <h3>Paso 4: Auditoría</h3>
+                    <p>Se mantiene un rastro de auditoría completo y transparente para todas las partes, 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Diapositiva 6: Números Destacados (Beneficios) -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Beneficios Estratégicos: <span>Reducción de Fraude</span></h2>
+    <div class="content-area">
+        <div class="two-column highlight-numbers-layout">
+            <div>
+                <div class="number">99%</div>
+                <div class="number-label">Reducción de Fraude y Piratería</div>
+            </div>
+            <div>
+                <h3>Protección Absoluta</h3>
+                <p>La inmutabilidad de la cadena de bloques previene la duplicación no autorizada y el fraude de licencias.</p>
+                <p>Esto no es solo seguridad; es la garantía de que su propiedad intelectual, su activo más valioso, le pertenece solo a usted y a quienes usted autorice.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Diapositiva 7: Imagen a la Derecha, Texto a la Izquierda (Beneficios) -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Beneficios Estratégicos: <span>Automatización de Regalías</span></h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <!-- Lista de viñetas personalizada -->
+                <div>
+                    <ul>
+                        <li>Elimine los retrasos y errores en los pagos de regalías.</li>
+                        <li>Reduzca drásticamente los costos administrativos y de auditoría.</li>
+                        <li>Los Smart Contracts pagan a los creadores instantáneamente según el uso.</li>
+                        <li>Asegure la confianza y la transparencia total entre usted y sus socios estratégicos.</li>
+                        <li>Construya relaciones comerciales más fuertes basadas en la confianza algorítmica.</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper"><img src="http://googleusercontent.com/image_collection/image_retrieval/1454887869501747324" alt="Visualización abstracta de transacciones digitales automatizadas"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Diapositiva 8: Imagen Sangrada a la Derecha (Casos de Uso) -->
+<div class="slide-container bleed-image-layout" id="slide6">
+    <div class="content-container">
+        <h2 class="slide-title">Casos de Uso <span>Profesionales</span></h2>
+        <div class="content-area">
+            <div class="bleed-text-side">
+                <p><strong>Licenciamiento de Software:</strong> Controle instalaciones, prevenga la piratería y gestione licencias por volumen de forma transparente y segura.</p>
+                <p><strong>Propiedad Intelectual (Música/Arte):</strong> Asegure la autoría y automatice el pago de regalías a artistas, compositores y creadores de contenido.</p>
+                <p><strong>Patentes y Marcas:</strong> Cree un registro global, indiscutible y fácilmente verificable de la propiedad y las licencias de patentes.</p>
+                <p><strong>Gestión de Activos Digitales (DRM):</strong> Una nueva era para el DRM, donde la protección es justa, transparente y no penaliza al usuario legítimo.</p>
+            </div>
+        </div>
+    </div>
+    <div class="image-container">
+        <img
+            class="bleed-image-side"
+            src="http://googleusercontent.com/image_collection/image_retrieval/13562478944846197674"
+            alt="Visualización de una red de datos abstracta y sofisticada">
+    </div>
+</div>
+
+<!-- Diapositiva 9: Cita (Propuesta de Valor) -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Mi Propuesta <span>de Valor</span></h2>
+    <div class="content-area">
+        <div class="quote-layout">
+            <blockquote>La tecnología es solo una herramienta. Yo proporciono la estrategia, la arquitectura y la ejecución para convertir esa herramienta en su próxima ventaja competitiva.</blockquote>
+            <cite>— [Tu Nombre / Tu Consultora]</cite>
+        </div>
+    </div>
+</div>
+
+<!-- Diapositiva 10: Viñetas Estilizadas (Propuesta de Implementación) -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Propuesta de <span>Implementación</span></h2>
+    <div class="content-area">
+        <div class="bullet-list">
+            <ul>
+                <li>
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <div>
+                        <strong>Fase 1: Análisis y Estrategia</strong>
+                        <p>Auditoría de sus activos de Propiedad Intelectual actuales. Diseño de una arquitectura blockchain a medida (pública, privada o híbrida) alineada con sus objetivos de negocio.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fa-solid fa-file-code"></i>
+                    <div>
+                        <strong>Fase 2: Desarrollo y Prototipo</strong>
+                        <p>Creación y prueba de los Smart Contracts. Desarrollo de un prototipo funcional (MVP) para validación interna y pruebas de estrés.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fa-solid fa-rocket"></i>
+                    <div>
+                        <strong>Fase 3: Integración y Despliegue</strong>
+                        <p>Integración segura con sus sistemas existentes (ERP, CRM). Lanzamiento de la plataforma de licenciamiento y capacitación de su equipo.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Diapositiva 11: Imagen de Fondo Completo (Seguridad) -->
+<div class="slide-container full-bg-image" id="slide17" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/11118480436405652619');">
+    <div class="content-overlay">
+        <h2>Seguridad a Nivel <span>de Bóveda</span></h2>
+        <p>Sus activos más valiosos, protegidos con criptografía de nivel militar. Inmutable. Inquebrantable. Indiscutible.</p>
+    </div>
+</div>
+
+<!-- Diapositiva 12: Preguntas y Respuestas (Q&A) -->
+<div class="slide-container" id="slide18">
+    <div class="qa-layout">
+        <h2>¿Preguntas?</h2>
+        <p>Iniciemos la conversación.</p>
+        <div class="contact-info">
+            [Tu Nombre] | [Tu Email Profesional]
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
